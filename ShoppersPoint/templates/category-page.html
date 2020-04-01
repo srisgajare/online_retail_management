@@ -33,7 +33,7 @@
         </div>
     {% endif %}
     <div class="row page-nav">
-        <a href="{{ page_list.prev }}"><button class="btn">Prev</button></a>&nbsp;&nbsp;<a href="{{ page_list.next }}"><button class="btn">Next</button></a>
+        <a href="{% url 'category' category prev_page %}"><button class="btn">Prev</button></a>&nbsp;&nbsp;<a href="{% url 'category' category next_page %}"><button class="btn">Next</button></a>
     </div>
 </div>
 {% endblock body %}
