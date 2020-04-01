@@ -294,6 +294,7 @@
                                             <td><strong>Product</strong></td>
                                             <td class="text-center"><strong>Price</strong></td>
                                             <td class="text-center"><strong>Quantity</strong></td>
+
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -312,7 +313,7 @@
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td class="text-center">{{ item.product.discounted_price }}</td>
+                                                <td class="text-center">${{ item.product.discounted_price }}</td>
                                                 <td class="text-center">{{ item.quantity }}</td>
                                             </tr>
                                         {% endfor %}

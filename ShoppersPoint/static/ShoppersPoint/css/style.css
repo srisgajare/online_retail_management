@@ -39,6 +39,16 @@ div h2 {
     min-height: 300px !important;
 }
 
+/*Start of product-slider*/
+/*slider css*/
+.slider {
+    background: #fff;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px 2px #ccc;
+    margin-top: 2em;
+}
+
 .content {
     padding: 20px;
     text-align: center;
@@ -59,6 +69,19 @@ div h2 {
     text-transform: uppercase;
     box-shadow: 0px 0px 2px 2px #ccc;
 }
+
+.product-slider {
+    margin: 0px 1em 0px 0em !important;
+}
+
+/*slider css*/
+/* carousel */
+.media-carousel {
+    margin-top: 2em;
+    margin-bottom: 0;
+    padding: 0px 10px 10px 10px;
+}
+
 
 .detail h5 {
     font-family: play;
