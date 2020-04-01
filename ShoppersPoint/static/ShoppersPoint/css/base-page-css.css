@@ -19,8 +19,7 @@ nav a{
 }
 
 nav a:hover{
-    color: #FFFF00;
-    background-color: #0099FF;
+    background-color: rgb(242, 245, 246);
     font-size: 20px;
 }
 
