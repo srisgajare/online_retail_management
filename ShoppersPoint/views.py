@@ -94,6 +94,7 @@ def product_page(request, product_id):
     category_type = str(Products.objects.get(product_id=product_id).category_type)
     products = []
     product_i = str(product_id)
+    image_list = []
     print(category_type + '<==')
     if category_type == 'laptop':
         products = Laptops.objects.get(product_id=product_id)
