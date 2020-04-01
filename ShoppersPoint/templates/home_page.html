@@ -13,7 +13,7 @@
                     <div class="col-md-2">
                         <div class="content category-name">
                             <h2>Deals on {{ category.category_name }}</h2>
-                            <a href="{{ category.category_type }}">
+                            <a href="{% url 'category' category.category_type 1 %}">
                                 <button class="btn btn-default view">View All</button>
                             </a>
                         </div>

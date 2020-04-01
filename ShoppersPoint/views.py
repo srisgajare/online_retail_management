@@ -14,8 +14,8 @@ def home_page(request):
     if request.user.is_authenticated:
         size = cart_count(request.user)
     categories = Category.objects.all()
-    mobiles = Mobiles.objects.all()[:24]
-    laptops = Laptops.objects.all()[:24]
+    mobiles = Mobiles.objects.all()
+    laptops = Laptops.objects.all()
     for mobile in mobiles:
         mobile.image_src = '../static/ShoppersPoint/ShoppersPoint/images/mobiles/' + str(mobile.product_id_id) + '.jpg'
     for laptop in laptops:
@@ -37,43 +37,40 @@ def category_view(request, category, page_index=1):
         size = cart_count(request.user)
     products = []
     page_no = int(page_index)
-    prev_link = ''
-    next_link = ''
     if page_no == 1:
         prev_page = int(page_no)
     else:
         prev_page = int(page_no - 1)
     next_page = int(page_no + 1)
-    start_index = int((page_no * 12) - 12)
-    end_index = int(page_no * 12)
+    start_index = int((page_no * 10) - 10)
+    end_index = int(page_no * 10)
     if category == 'mobile':
-        prev_link = '/home/mobile/' + str(prev_page)
-        next_link = '/home/mobile/' + str(next_page)
         products = Mobiles.objects.all()[start_index:end_index]
         for product in products:
             if len(product.product_id.product_name) > 25:
                 product.product_id.product_name = product.product_id.product_name[:25] + '...'
             product.image_src = '/static/ShoppersPoint/ShoppersPoint/images/mobiles/' + str(product.product_id_id) + '.jpg'
     if category == 'laptop':
-        prev_link = '/home/laptop/' + str(prev_page)
-        next_link = '/home/laptop/' + str(next_page)
         products = Laptops.objects.all()[start_index:end_index]
         for product in products:
             if len(product.product_id.product_name) > 25:
                 product.product_id.product_name = product.product_id.product_name[:25] + '...'
             product.image_src = '/static/ShoppersPoint/ShoppersPoint/images/laptops/' + str(product.product_id_id) + '.jpg'
-    page_list = {'prev': prev_link, 'next': next_link}
     if len(products) == 0:
         cont_dict = {
+            'category' : category,
             'product_list': products,
-            'page_list': page_list,
+            'prev_page' : prev_page,
+            'next_page': next_page,
             'error_list': '  ',
             'size': size,
         }
     else:
         cont_dict = {
+            'category' : category,
             'product_list': products,
-            'page_list': page_list,
+            'prev_page' : prev_page,
+            'next_page': next_page,
             'size': size,
 
         }
