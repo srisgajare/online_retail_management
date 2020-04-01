@@ -41,11 +41,6 @@ body {
     color: #DD2C00;
 }
 
-#kompany-name {
-    font-family: 'Inconsolata', monospace;
-    font-size: 40px;
-}
-
 label {
     text-align: left;
     min-width: 400px !important;
