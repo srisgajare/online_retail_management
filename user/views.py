@@ -1,5 +1,5 @@
 import sys
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 import json
 from django.http import HttpResponseRedirect, HttpResponse, JsonResponse, Http404
 from django.shortcuts import render, redirect
@@ -45,6 +45,9 @@ def log_in(request):
         print(form)
         return render(request, 'login.html', {'login_form': form})
 
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect("/")
 
 def cart(request):
     if request.user.is_authenticated:
