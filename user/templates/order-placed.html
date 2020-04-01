@@ -1,0 +1,8 @@
+{% extends 'base_kompany.html' %}
+{% load static%}
+<link href="{% static 'ShoppersPoint/css/style.css' %}" rel="stylesheet">
+{% block body %}<h1 class="text-center">Order placed successfully!!</h1>
+<a href="{% url 'home' %}" class="text-center">
+    <button class="btn btn-group-lg">Continue Shopping</button>
+</a>
+{% endblock body %}

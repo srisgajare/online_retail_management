@@ -1,0 +1,124 @@
+{% extends 'base_kompany.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'ShoppersPoint/css/base-page-css.css' %}">
+{% endblock css %}
+
+{% block body %}
+    {% if categories %}
+        {% for category in categories %}
+            <div class="product-slider">
+            <div class="container-fluid">
+                <div class="col-md-12 slider">
+                    <div class="col-md-2">
+                        <div class="content category-name">
+                            <h2>Deals on {{ category.category_name }}</h2>
+                            <a href="{{ category.category_type }}">
+                                <button class="btn btn-default view">View All</button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="carousel slide media-carousel" id="{{ category.category_type }}">
+                            <div class="carousel-inner">
+                            {% if mobile_list.0.product_category_id == category.category_type %}
+                                {% for mobile in mobile_list %}
+                                    {% if forloop.counter0|divisibleby:"4" %}
+                                        <div class="item {% if forloop.first %}active{% endif %}">
+                                            <div class="row">
+                                                <div class="col-md-3 col-sm-6">
+                                                    <a class="thumbnail" href="/home/product/{{ mobile.product_id_id }}"><img id="{{ category.category_type }}"
+                                                                                       src="{{ mobile.image_src }}"></a>
+                                                    <div class="detail text-center">
+                                                        <h5><b>{{ mobile.product_name }}</b></h5>
+                                                        <h6>Extra 50%
+                                                            off
+                                                        </h6>
+                                                        <p class="text-muted">Now ${{ mobile.discounted_price }}</p>
+                                                    </div>
+                                                </div>
+                                                {% elif forloop.counter|divisibleby:"4" %}
+                                                <div class="col-md-3 col-sm-6">
+                                                    <a class="thumbnail" href="/home/product/{{ mobile.product_id_id }}"><img id="{{ category.category_type }}"
+                                                                                       src="{{ mobile.image_src }}"></a>
+                                                    <div class="detail text-center">
+                                                        <h5><b>{{ mobile.product_name }}</b></h5>
+                                                        <h6>Extra 50%
+                                                            off
+                                                        </h6>
+                                                        <p class="text-muted">Now ${{ mobile.discounted_price }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% else %}
+                                        <div class="col-md-3 col-sm-6">
+                                            <a class="thumbnail" href="/home/product/{{ mobile.product_id_id }}"><img id="{{ category.category_type }}"
+                                                                               src="{{ mobile.image_src }}"></a>
+                                            <div class="detail text-center">
+                                                <h5><b>{{ mobile.product_name }}</b></h5>
+                                                <h6>Extra 50%
+                                                    off
+                                                </h6>
+                                                <p class="text-muted">Now ${{ mobile.discounted_price }}</p>
+                                            </div>
+                                        </div>
+
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                            {% if laptop_list.0.product_category_id == category.category_type  %}
+                                {% for laptop in laptop_list %}
+                                    {% if forloop.counter0|divisibleby:"4" %}
+                                        <div class="item {% if forloop.first %}active{% endif %}">
+                                            <div class="row">
+                                                <div class="col-md-3 col-sm-6">
+                                                    <a class="thumbnail" href="/home/product/{{ laptop.product_id_id }}"><img id="{{ category.category_type }}"
+                                                                                       src="{{ laptop.image_src }}"></a>
+                                                    <div class="detail text-center">
+                                                        <h5><b>{{ laptop.product_name }}</b></h5>
+                                                        <h6>Extra 10%
+                                                            off
+                                                        </h6>
+                                                        <p class="text-muted">Now ${{ laptop.discounted_price }}</p>
+                                                    </div>
+                                                </div>
+                                                {% elif forloop.counter|divisibleby:"4" %}
+                                                <div class="col-md-3 col-sm-6">
+                                                    <a class="thumbnail" href="/home/product/{{ laptop.product_id_id }}"><img id="{{ category.category_type }}"
+                                                                                       src="{{ laptop.image_src }}"></a>
+                                                    <div class="detail text-center">
+                                                        <h5><b>{{ laptop.product_name }}</b></h5>
+                                                        <h6>Extra 10% off
+                                                        </h6>
+                                                        <p class="text-muted">Now ${{ laptop.discounted_price}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% else %}
+                                        <div class="col-md-3 col-sm-6">
+                                            <a class="thumbnail" href="/home/product/{{ laptop.product_id_id }}"><img id="{{ category.category_type }}"
+                                                                               src="{{ laptop.image_src }}"></a>
+                                            <div class="detail text-center">
+                                                <h5><b>{{ laptop.product_name }}</b></h5>
+                                                <h6>Extra 10%
+                                                    off
+                                                </h6>
+                                                <p class="text-muted">Now ${{ laptop.discounted_price }}</p>
+                                            </div>
+                                        </div>
+
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+        {% endfor %}
+    {% endif %}
+{% endblock %}

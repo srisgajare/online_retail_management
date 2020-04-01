@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <title> {% block title %} ShoppersPoint {% endblock %} </title>
+    {% load static %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <link href="{% static 'ShoppersPoint/css/style.css' %}" rel="stylesheet">
+    {% block css %}
+    {% endblock %}
+
+</head>
+{% block content %}
+<body>
+
+
+<nav class="navbar navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">ShoppersPoint</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Home</a></li>
+            </ul>
+            <form class="navbar-form navbar-left">
+                <div class="form-group">
+                    <input id="search-input" type="text" class="form-control" placeholder="Search">
+                </div>
+                <button id="search-id" type="button" class="btn btn-default">Submit</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                    <li><a>Welcome, {{ request.user.username }}</a></li>
+                    <li><a href="{% url 'user:logout' %}"><span class="glyphicon glyphicon-log-out"></span>
+                        Logout</a></li>
+                    <li><a href="{% url 'user:cart' %}">
+                        <span class="glyphicon glyphicon-shopping-cart "> </span>
+                        CART
+                        <span class="badge" id="cart-size">{{ size }}</span>
+                    </a></li>
+                {% else %}
+                    <li><a href="{% url 'user:signup' %} "><span class="glyphicon glyphicon-user"></span> Sign Up</a>
+                    </li>
+                    <li><a href="{% url 'user:login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+                    </li>
+                {% endif %}
+
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<div id="main-results-search"></div>
+
+{% endblock %}
+
+<!-- Nav Bar End -->
+
+{% block slider %}
+
+{% endblock %}
+
+
+
+{% block body %}
+
+{% endblock %}
+
+{% block script %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/elevatezoom/3.0.8/jqueryElevateZoom.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="{% static '/ShoppersPoint/js/search.js' %}"></script>
+{% endblock script %}
