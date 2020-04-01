@@ -18,7 +18,6 @@ def home_page(request):
     laptops = Laptops.objects.all()[:24]
     for mobile in mobiles:
         mobile.image_src = '../static/ShoppersPoint/ShoppersPoint/images/mobiles/' + str(mobile.product_id_id) + '.jpg'
-        print(mobile.image_src)
     for laptop in laptops:
         laptop.image_src = '../static/ShoppersPoint/ShoppersPoint/images/laptops/' + str(laptop.product_id_id) + '.jpg'
     
@@ -37,7 +36,6 @@ def category_view(request, category, page_index=1):
     if request.user.is_authenticated:
         size = cart_count(request.user)
     products = []
-    print(page_index)
     page_no = int(page_index)
     prev_link = ''
     next_link = ''
@@ -90,7 +88,6 @@ def product_page(request, product_id):
     products = []
     product_i = str(product_id)
     image_list = []
-    print(category_type + '<==')
     if category_type == 'laptop':
         products = Laptops.objects.get(product_id=product_id)
         image_list = '/static/ShoppersPoint/ShoppersPoint/images/laptops/' + str(product_id) + '.jpg'
@@ -111,7 +108,6 @@ def product_page(request, product_id):
 
 def search(request, *args, **kwargs):
     search_query = kwargs.pop('search_query')
-    print(search_query)
     if search_query is not None and search_query != '' and request.is_ajax():
         products = Products.objects.filter(product_name__contains=search_query)[:8]
 

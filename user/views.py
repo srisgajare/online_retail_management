@@ -13,7 +13,6 @@ from user.models import Cart, Orders, Addressbook
 
 
 def signup(request):
-    print(request)
     if request.user.is_authenticated:
         return redirect('/home/')
     else:
@@ -36,13 +35,11 @@ def log_in(request):
         return redirect('/home/')
     else:
         form = LoginForm(request.POST or None)
-        print(form)
         if request.POST and form.is_valid():
             user = form.login(request)
             if user:
                 login(request, user)
                 return HttpResponseRedirect("/")  # Redirect to a success page.
-        print(form)
         return render(request, 'login.html', {'login_form': form})
 
 def logout_view(request):
@@ -77,7 +74,6 @@ def cart(request):
 def remove_item_from_cart(request, product_id):
     if request.user.is_authenticated:
         query = Cart.objects.filter(user=request.user, product_id=product_id)
-        print(query)
         query.delete()
         return redirect('../../cart')
 
@@ -102,7 +98,6 @@ def add_item(request):
             return JsonResponse(json_response)
         except:
             e = sys.exc_info()
-            print(e)
             return HttpResponse(e)
     else:
         return redirect('user:signup')
@@ -115,11 +110,8 @@ def check_out(request):
         order_no = random_with_n_digits(6)
         for product in cart_items:
             price += (product.product.discounted_price * product.quantity)
-        print(len(Addressbook.objects.filter(user=request.user)))
-        print('No of address')
         if len(Addressbook.objects.filter(user=request.user)) > 0:
             address = Addressbook.objects.get(user=request.user)
-            print(address.locality)
             cont_dict = {
                 'order_items': cart_items,
                 'price': price,
@@ -137,7 +129,6 @@ def check_out(request):
 
 def check_out_item(request, product_id):
     if request.user.is_authenticated:
-        print('Product id in checkout' + str(product_id))
         if len(Cart.objects.filter(product_id=product_id, user=request.user)) > 0:
             item = Cart.objects.filter(product_id=product_id, user=request.user)
             for i in item:
@@ -149,15 +140,12 @@ def check_out_item(request, product_id):
             item.user = request.user
             item.quantity = 1
             item.save()
-        print('item saved to cart')
         return redirect('user:check_out')
     return redirect('user:signup')
 
 
 def add_address(request):
     addr = Addressbook()
-    print(request.body)
-    print(request.POST.keys())
     addr.user = request.user
     addr.house_number = request.POST.get('house')
     addr.locality = request.POST.get('locality')
@@ -183,7 +171,6 @@ def order_placed(request):
         purchase_item.quantity = item.quantity
         purchase_item.product = item.product
         purchase_item.order_date = datetime.now()
-        print(str(i) + '==<<')
         i = i + 1
         purchase_item.save()
         item.delete()
