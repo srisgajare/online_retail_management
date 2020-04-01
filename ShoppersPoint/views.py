@@ -14,19 +14,14 @@ def home_page(request):
     if request.user.is_authenticated:
         size = cart_count(request.user)
     categories = Category.objects.all()
-    mobiles = Mobiles.objects.all()
+    mobiles = Mobiles.objects.all()[:24]
     laptops = Laptops.objects.all()[:24]
     for mobile in mobiles:
         mobile.image_src = '../static/ShoppersPoint/ShoppersPoint/images/mobiles/' + str(mobile.product_id_id) + '.jpg'
         print(mobile.image_src)
     for laptop in laptops:
         laptop.image_src = '../static/ShoppersPoint/ShoppersPoint/images/laptops/' + str(laptop.product_id_id) + '.jpg'
-    # if request.user.is_authenticated:
-    #     print(Cart.objects.annotate(product_count=Count('product_id')).filter(user=request.user).query)
-    #     product_count = Cart.objects.annotate(product_count=Count('product_id')).filter(user=request.user)
-
-        #size = (len(product_count))
-
+    
     cont_dict = {
         'categories': categories,
         'mobile_list': mobiles,
@@ -58,16 +53,16 @@ def category_view(request, category, page_index=1):
         next_link = '/home/mobile/' + str(next_page)
         products = Mobiles.objects.all()[start_index:end_index]
         for product in products:
-            if len(product.product_name) > 25:
-                product.product_name = product.product_name[:25] + '...'
+            if len(product.product_id.product_name) > 25:
+                product.product_id.product_name = product.product_id.product_name[:25] + '...'
             product.image_src = '/static/ShoppersPoint/ShoppersPoint/images/mobiles/' + str(product.product_id_id) + '.jpg'
     if category == 'laptop':
         prev_link = '/home/laptop/' + str(prev_page)
         next_link = '/home/laptop/' + str(next_page)
         products = Laptops.objects.all()[start_index:end_index]
         for product in products:
-            if len(product.product_name) > 25:
-                product.product_name = product.product_name[:25] + '...'
+            if len(product.product_id.product_name) > 25:
+                product.product_id.product_name = product.product_id.product_name[:25] + '...'
             product.image_src = '/static/ShoppersPoint/ShoppersPoint/images/laptops/' + str(product.product_id_id) + '.jpg'
     page_list = {'prev': prev_link, 'next': next_link}
     if len(products) == 0:
