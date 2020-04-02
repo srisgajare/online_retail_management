@@ -34,7 +34,7 @@ class Products(models.Model):
 
 
 class Mobiles(models.Model):
-    product_id = models.ForeignKey(Products, on_delete=models.CASCADE)
+    product_id = models.ForeignKey(Products, primary_key=True, on_delete=models.CASCADE)
     product_category = models.ForeignKey(Category, on_delete=models.CASCADE)
     model_name = models.CharField(max_length=1000, default='')
     color = models.CharField(max_length=250, default='')
@@ -56,7 +56,7 @@ class Mobiles(models.Model):
 
 
 class Laptops(models.Model):
-    product_id = models.ForeignKey(Products, on_delete=models.CASCADE)
+    product_id = models.ForeignKey(Products, primary_key=True, on_delete=models.CASCADE)
     product_category = models.ForeignKey(Category, on_delete=models.CASCADE)
     product_content = models.CharField(max_length=1000, default='')
     color = models.CharField(max_length=250, default='')
