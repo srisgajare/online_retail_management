@@ -17,9 +17,9 @@ def home_page(request):
     mobiles = Mobiles.objects.all()
     laptops = Laptops.objects.all()
     for mobile in mobiles:
-        mobile.image_src = '../static/ShoppersPoint/ShoppersPoint/images/mobiles/' + str(mobile.product_id_id) + '.jpg'
+        mobile.image_src = '../static/ShoppersPoint/ShoppersPoint/images/mobiles/' + str(mobile.product_id_id % 10) + '.jpg'
     for laptop in laptops:
-        laptop.image_src = '../static/ShoppersPoint/ShoppersPoint/images/laptops/' + str(laptop.product_id_id) + '.jpg'
+        laptop.image_src = '../static/ShoppersPoint/ShoppersPoint/images/laptops/' + str(laptop.product_id_id % 10) + '.jpg'
     
     cont_dict = {
         'categories': categories,
@@ -49,13 +49,13 @@ def category_view(request, category, page_index=1):
         for product in products:
             if len(product.product_id.product_name) > 25:
                 product.product_id.product_name = product.product_id.product_name[:25] + '...'
-            product.image_src = '/static/ShoppersPoint/ShoppersPoint/images/mobiles/' + str(product.product_id_id) + '.jpg'
+            product.image_src = '/static/ShoppersPoint/ShoppersPoint/images/mobiles/' + str(product.product_id_id % 10) + '.jpg'
     if category == 'laptop':
         products = Laptops.objects.all()[start_index:end_index]
         for product in products:
             if len(product.product_id.product_name) > 25:
                 product.product_id.product_name = product.product_id.product_name[:25] + '...'
-            product.image_src = '/static/ShoppersPoint/ShoppersPoint/images/laptops/' + str(product.product_id_id) + '.jpg'
+            product.image_src = '/static/ShoppersPoint/ShoppersPoint/images/laptops/' + str(product.product_id_id % 10) + '.jpg'
     if len(products) == 0:
         cont_dict = {
             'category' : category,
@@ -87,10 +87,10 @@ def product_page(request, product_id):
     image_list = []
     if category_type == 'laptop':
         products = Laptops.objects.get(product_id=product_id)
-        image_list = '/static/ShoppersPoint/ShoppersPoint/images/laptops/' + str(product_id) + '.jpg'
+        image_list = '/static/ShoppersPoint/ShoppersPoint/images/laptops/' + str(product_id % 10) + '.jpg'
     if category_type == 'mobile':
         products = Mobiles.objects.get(product_id=product_id)
-        image_list = '/static/ShoppersPoint/ShoppersPoint/images/mobiles/' + str(product_id) + '.jpg'
+        image_list = '/static/ShoppersPoint/ShoppersPoint/images/mobiles/' + str(product_id % 10) + '.jpg'
 
     cont_dict = {
         'product_list': products,
