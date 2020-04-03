@@ -52,8 +52,9 @@ def cart(request):
         size = cart_count(request.user)
         product_list = Cart.objects.filter(user=request.user).select_related()
         price = 0.0
-        for product in product_list:
+        for i,product in enumerate(product_list):
             price += (product.product.discounted_price * product.quantity)
+            product_list[i].product_id = product.product.product_id % 10
         if len(product_list) > 0:
             cont_dict = {
                 'product_list': product_list,
@@ -108,8 +109,9 @@ def check_out(request):
         cart_items = Cart.objects.filter(user=request.user)
         price = 0
         order_no = random_with_n_digits(6)
-        for product in cart_items:
+        for i,product in enumerate(cart_items):
             price += (product.product.discounted_price * product.quantity)
+            cart_items[i].product_id = product.product.product_id % 10
         if len(Addressbook.objects.filter(user=request.user)) > 0:
             address = Addressbook.objects.get(user=request.user)
             cont_dict = {
