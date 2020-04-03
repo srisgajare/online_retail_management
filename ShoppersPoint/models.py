@@ -59,7 +59,6 @@ class Laptops(models.Model):
     product_category = models.ForeignKey(Category, on_delete=models.CASCADE)
     product_content = models.CharField(max_length=1000, default='')
     color = models.CharField(max_length=250, default='')
-    graphics_ram = models.CharField(max_length=20, default='')
     brand = models.CharField(max_length=100, default='')
     processor = models.CharField(max_length=100, default='')
     ssd = models.CharField(max_length=100, default='')
