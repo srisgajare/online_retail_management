@@ -22,7 +22,6 @@ class Products(models.Model):
     stock = models.IntegerField(default=0)
     price = models.IntegerField(default=0)
     discounted_price = models.IntegerField(default=0)
-    image_count = models.IntegerField(default=0)
     category_type = models.ForeignKey(Category, on_delete=models.CASCADE)
 
     def __str__(self):

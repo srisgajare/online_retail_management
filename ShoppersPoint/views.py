@@ -91,7 +91,6 @@ def product_page(request, product_id):
     if category_type == 'mobile':
         products = Mobiles.objects.get(product_id=product_id)
         image_list = '/static/ShoppersPoint/ShoppersPoint/images/mobiles/' + str(product_id) + '.jpg'
-    num = int(Products.objects.get(product_id=product_id).image_count)
 
     cont_dict = {
         'product_list': products,
