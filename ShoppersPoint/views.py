@@ -54,6 +54,7 @@ def category_view(request, category, page_index=1):
         products = Laptops.objects.all()[start_index:end_index]
         for product in products:
             if len(product.product_id.product_name) > 25:
+                product.product.product_id = product.product.product_id % 10
                 product.product_id.product_name = product.product_id.product_name[:25] + '...'
             product.image_src = '/static/ShoppersPoint/ShoppersPoint/images/laptops/' + str(product.product_id_id % 10) + '.jpg'
     if len(products) == 0:
@@ -87,10 +88,10 @@ def product_page(request, product_id):
     image_list = []
     if category_type == 'laptop':
         products = Laptops.objects.get(product_id=product_id)
-        image_list = '/static/ShoppersPoint/ShoppersPoint/images/laptops/' + str(product_id) + '.jpg'
+        image_list = '/static/ShoppersPoint/ShoppersPoint/images/laptops/' + str(int(product_id) % 10) + '.jpg'
     if category_type == 'mobile':
         products = Mobiles.objects.get(product_id=product_id)
-        image_list = '/static/ShoppersPoint/ShoppersPoint/images/mobiles/' + str(product_id) + '.jpg'
+        image_list = '/static/ShoppersPoint/ShoppersPoint/images/mobiles/' + str(int(product_id) % 10) + '.jpg'
 
     cont_dict = {
         'product_list': products,
