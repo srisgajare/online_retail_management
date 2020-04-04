@@ -23,6 +23,7 @@ class Products(models.Model):
     price = models.IntegerField(default=0)
     discounted_price = models.IntegerField(default=0)
     category_type = models.ForeignKey(Category, on_delete=models.CASCADE)
+    image_src = models.CharField(max_length=2000, default='')
 
     def __str__(self):
         return str(self.product_id) + ' -- ' + self.product_name
@@ -44,7 +45,6 @@ class Mobiles(models.Model):
     primary_camera = models.CharField(max_length=250, default='')
     secondary_camera = models.CharField(max_length=250, default='')
     warranty_summary = models.CharField(max_length=2000, default='')
-    image_src = models.CharField(max_length=2000, default='')
 
     def __str__(self):
         return self.product_id.product_name
@@ -66,7 +66,6 @@ class Laptops(models.Model):
     storage = models.CharField(max_length=250, default='')
     display = models.CharField(max_length=250, default='')
     warranty_summary = models.CharField(max_length=2000, default='')
-    image_src = models.CharField(max_length=2000, default='')
 
     def __str__(self):
         return self.product_id.product_name

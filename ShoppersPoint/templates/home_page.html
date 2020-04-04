@@ -28,7 +28,7 @@
                                             <div class="row">
                                                 <div class="col-md-3 col-sm-6">
                                                     <a class="thumbnail" href="/home/product/{{ mobile.product_id_id }}"><img id="{{ category.category_type }}"
-                                                                                       src="{{ mobile.image_src }}"></a>
+                                                                                       src="{{ mobile.product_id.image_src }}"></a>
                                                     <div class="detail text-center">
                                                         <h5><b>{{ mobile.product_id.product_name }}</b></h5>
                                                         <h6>Extra 10%
@@ -40,7 +40,7 @@
                                                 {% elif forloop.counter|divisibleby:"4" %}
                                                 <div class="col-md-3 col-sm-6">
                                                     <a class="thumbnail" href="/home/product/{{ mobile.product_id_id }}"><img id="{{ category.category_type }}"
-                                                                                       src="{{ mobile.image_src }}"></a>
+                                                                                       src="{{ mobile.product_id.image_src }}"></a>
                                                     <div class="detail text-center">
                                                         <h5><b>{{ mobile.product_id.product_name }}</b></h5>
                                                         <h6>Extra 10%
@@ -54,7 +54,7 @@
                                     {% else %}
                                         <div class="col-md-3 col-sm-6">
                                             <a class="thumbnail" href="/home/product/{{ mobile.product_id_id }}"><img id="{{ category.category_type }}"
-                                                                               src="{{ mobile.image_src }}"></a>
+                                                                               src="{{ mobile.product_id.image_src }}"></a>
                                             <div class="detail text-center">
                                                 <h5><b>{{ mobile.product_id.product_name }}</b></h5>
                                                 <h5><b>{{ mobile.product_name }}</b></h5>
@@ -75,7 +75,7 @@
                                             <div class="row">
                                                 <div class="col-md-3 col-sm-6">
                                                     <a class="thumbnail" href="/home/product/{{ laptop.product_id_id }}"><img id="{{ category.category_type }}"
-                                                                                       src="{{ laptop.image_src }}"></a>
+                                                                                       src="{{ laptop.product_id.image_src }}"></a>
                                                     <div class="detail text-center">
                                                         <h5><b>{{ laptop.product_id.product_name }}</b></h5>
                                                         <h6>Extra 10%
@@ -87,7 +87,7 @@
                                                 {% elif forloop.counter|divisibleby:"4" %}
                                                 <div class="col-md-3 col-sm-6">
                                                     <a class="thumbnail" href="/home/product/{{ laptop.product_id_id }}"><img id="{{ category.category_type }}"
-                                                                                       src="{{ laptop.image_src }}"></a>
+                                                                                       src="{{ laptop.product_id.image_src }}"></a>
                                                     <div class="detail text-center">
                                                         <h5><b>{{ laptop.product_id.product_name }}</b></h5>
                                                         <h6>Extra 10% off
@@ -100,7 +100,7 @@
                                     {% else %}
                                         <div class="col-md-3 col-sm-6">
                                             <a class="thumbnail" href="/home/product/{{ laptop.product_id_id }}"><img id="{{ category.category_type }}"
-                                                                               src="{{ laptop.image_src }}"></a>
+                                                                               src="{{ laptop.product_id.image_src }}"></a>
                                             <div class="detail text-center">
                                                 <h5><b>{{ laptop.product_id.product_name }}</b></h5>
                                                 <h6>Extra 10%
