@@ -100,6 +100,11 @@ div h2 {
 
 }
 
+.thumbnail img {
+    height:200px;
+    width:100%;
+}
+
 .category-name {
     margin-top: 125px;
 }

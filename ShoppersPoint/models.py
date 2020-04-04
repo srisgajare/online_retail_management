@@ -61,7 +61,6 @@ class Laptops(models.Model):
     color = models.CharField(max_length=250, default='')
     brand = models.CharField(max_length=100, default='')
     processor = models.CharField(max_length=100, default='')
-    ssd = models.CharField(max_length=100, default='')
     ram = models.CharField(max_length=100, default='')
     ram_type = models.CharField(max_length=100, default='')
     storage = models.CharField(max_length=250, default='')

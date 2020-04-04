@@ -166,6 +166,12 @@ nav a:hover{
     width: 300px !important;
 }
 
+/*Product Image Responsiveness*/
+.mobile {
+    height: 300px !important;
+    width: 300px !important;
+}
+
 
 .product-info {
     text-align: center;
