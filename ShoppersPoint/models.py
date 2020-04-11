@@ -6,7 +6,7 @@ from django.db import models
 
 class Category(models.Model):
     category_type = models.CharField(max_length=250, primary_key=True)
-    category_name = models.CharField(max_length=250, default='')
+    category_info = models.CharField(max_length=1000, default='')
 
     def __str__(self):
         return self.category_type
@@ -20,8 +20,8 @@ class Products(models.Model):
     product_id = models.IntegerField(primary_key=True)
     product_name = models.CharField(max_length=1000, default='')
     stock = models.IntegerField(default=0)
-    price = models.IntegerField(default=0)
-    discounted_price = models.IntegerField(default=0)
+    price = models.FloatField(default=0)
+    discounted_price = models.FloatField(default=0)
     category_type = models.ForeignKey(Category, on_delete=models.CASCADE)
     image_src = models.CharField(max_length=2000, default='')
 
