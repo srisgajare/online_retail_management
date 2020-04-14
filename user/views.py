@@ -54,12 +54,12 @@ def cart(request):
         price = 0.0
         for i,product in enumerate(product_list):
             price += (product.product.discounted_price * product.quantity)
-            product_list[i].product_id = product.product.product_id % 10
+            product_list[i].image_src = product.product.product_id % 10
         if len(product_list) > 0:
             cont_dict = {
                 'product_list': product_list,
                 'price': price,
-                'size': size,
+                'size': size, 
             }
         else:
             cont_dict = {
@@ -111,7 +111,7 @@ def check_out(request):
         order_no = random_with_n_digits(6)
         for i,product in enumerate(cart_items):
             price += (product.product.discounted_price * product.quantity)
-            cart_items[i].product_id = product.product.product_id % 10
+            cart_items[i].image_src = product.product.product_id % 10
         if len(Addressbook.objects.filter(user=request.user)) > 0:
             address = Addressbook.objects.get(user=request.user)
             cont_dict = {
